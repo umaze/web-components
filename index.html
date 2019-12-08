@@ -19,6 +19,7 @@
 </head>
 <body>
     <um-modal>
+        <h1 slot="title">Please Confirm</h1>
         <p>With your confirmation you agree to pay the full amount!</p>
     </um-modal>
     <p>Please confirm your choice.</p>
@@ -27,8 +28,17 @@
         const confirmButton = document.querySelector('button');
         const modal = document.querySelector('um-modal');
 
+        modal.addEventListener('confirm', () => {
+            console.log('Confirmed...');
+        });
+        modal.addEventListener('cancel', () => {
+            console.log('Cancelled...');
+        });
+
         confirmButton.addEventListener('click', () => {
-            modal.setAttribute('opened', '');
+            if (!modal.isOpen) {
+                modal.open();
+            }
         });
     </script>
 </body>
